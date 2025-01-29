@@ -1,0 +1,3 @@
+I need the payload as same as the response of this api
+http://57.128.202.146:9091/ufm-server/api/op_commander_dashboards/:id
+http://57.128.202.146:9091/ufm-server/api/op_commander_dashboards/6

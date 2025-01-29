@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn3.devexpress.com/jslib/24.2.3/css/dx.light.css"
+    />
+    <!-- DevExtreme libraries (reference only one of them) -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn3.devexpress.com/jslib/24.2.3/js/dx.all.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- styles -->
+    <style>
+      :root {
+        --bs-table-bg-type: #f8f9fa !important;
+      }
+      .table-striped > tbody > tr:nth-of-type(odd) > * {
+        /* --bs-table-color-type: var(--bs-table-striped-color); */
+        --bs-table-bg-type: #f8f9fa !important;
+        background-color: #f8f9fa;
+      }
+      .table tr {
+        border: transparent;
+      }
+      .container-fluid {
+        background-color: #fff;
+        position: absolute;
+        top: 0px;
+        z-index: 10010;
+      }
+      #chart {
+        height: 440px;
+      }
+
+      .tooltip-header {
+        margin-bottom: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #c5c5c5;
+      }
+
+      .tooltip-body {
+        width: 170px;
+      }
+
+      .tooltip-body .series-name {
+        font-weight: normal;
+        opacity: 0.6;
+        display: inline-block;
+        line-height: 1.5;
+        padding-right: 10px;
+        width: 126px;
+      }
+
+      .tooltip-body .value-text {
+        display: inline-block;
+        line-height: 1.5;
+        width: 30px;
+      }
+
+      /* ---------------- angular main component ----------------- */
+
+      .report-title-print {
+        margin-top: 2rem;
+        display: flex;
+      }
+      .widgets-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+      }
+      .widgets-container h5 {
+        font-size: 30px;
+      }
+      .widgets-container img {
+        width: 800px;
+        filter: hue-rotate(273deg);
+        margin: 25px auto 50px auto;
+        opacity: 0.7;
+      }
+      .widgets-container h6 {
+        font-size: 25px;
+      }
+      /* ---------------- angular charts ----------------- */
+
+      #gauge {
+        height: 440px;
+        width: 100%;
+      }
+      #chart {
+        height: 440px;
+      }
+
+      /* ---------------- counter ----------------- */
+      .counter-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+      }
+
+      .counter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-weight: 500;
+        text-align: center;
+        color: #92728e;
+        font-size: 4em;
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .counter-value {
+          font-size: 1em;
+        }
+
+        .counter-label {
+          font-size: 0.3em;
+          color: #6c6c6c;
+        }
+
+        span {
+          display: inline-block;
+        }
+      }
+
+      .widget-container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 12px 16px 40px 0 rgba(112, 144, 176, 0.2);
+        overflow: hidden;
+        transform-origin: center;
+        opacity: 1;
+        transform: scale(1);
+        transition: none;
+        height: 100%;
+        /* // padding-bottom: 20px; */
+        flex-grow: 1;
+        width: 100%;
+        height: auto;
+        height: 500px;
+      }
+
+      .custom-widget-content {
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      .widget-container.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        margin: 0;
+        z-index: 10050;
+        border-radius: 0;
+        background-color: rgba(255, 255, 255, 1);
+        animation: fullscreen-expand 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .widget-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4.8px 20px;
+        background: #f7f7f7;
+        border-bottom: 1px solid #eee;
+      }
+
+      .widget-header h3 {
+        color: rgba(97, 54, 84, 1);
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      .widget-controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .widget-controls div {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+      }
+
+      .widget-controls div:hover {
+        transform: scale(1.2);
+      }
+
+      .widget-controls i.dx-icon-fullscreen {
+        font-size: 22.4px;
+        color: #657ceb;
+        transition: color 0.2s ease;
+      }
+
+      .widget-controls i.dx-icon-fullscreen:hover {
+        color: #657ceb;
+      }
+
+      .widget-content {
+        padding: 1rem;
+        height: calc(100% - 70px);
+        overflow-y: auto;
+      }
+
+      .widget-content.fullscreen-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fff;
+      }
+
+      .widget-content.fullscreen-content > * {
+        width: 100%;
+        height: 100%;
+        max-width: 100vw;
+        max-height: 100vh;
+        padding: 50px;
+        object-fit: contain;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes fullscreen-expand {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .delete-icon {
+        padding-bottom: 0.15rem;
+      }
+      .report-title-print {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+      }
+      .widgets-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+
+        flex-grow: 1;
+      }
+      .widgets-container h5 {
+        font-size: 30px;
+      }
+      .widgets-container img {
+        width: 800px;
+        filter: hue-rotate(273deg);
+        margin: 25px auto 50px auto;
+        opacity: 0.7;
+      }
+      .widgets-container h6 {
+        font-size: 25px;
+      }
+      /* .progress-container{
+        display: flex;
+        align-items: center;
+        min-width: 110px;
+        gap: 10px;
+      } */
+      /* .progress-container .percentage{
+        min-width:30px;
+      } */
+      .progress {
+        height: 5px !important;
+        /* width: 100%; */
+      }
+    </style>
+    <!-- loader styles -->
+    <style>
+      .loader-contanier {
+        display: flex;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background: white;
+        z-index: 10100;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+      }
+
+      .loader {
+        --path: #d99058;
+        --dot: #29c966;
+        --duration: 3s;
+        width: 44px;
+        height: 44px;
+        position: relative;
+      }
+
+      .loader:before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        position: absolute;
+        display: block;
+        background: var(--dot);
+        top: 37px;
+        left: 19px;
+        transform: translate(-18px, -18px);
+        animation: dotRect var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+
+      .loader svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .loader svg rect,
+      .loader svg polygon,
+      .loader svg circle {
+        fill: none;
+        stroke: var(--path);
+        stroke-width: 10px;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+
+      .loader svg polygon {
+        stroke-dasharray: 145 76 145 76;
+        stroke-dashoffset: 0;
+        animation: pathTriangle var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+
+      .loader svg rect {
+        stroke-dasharray: 192 64 192 64;
+        stroke-dashoffset: 0;
+        animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+
+      .loader svg circle {
+        stroke-dasharray: 150 50 150 50;
+        stroke-dashoffset: 75;
+        animation: pathCircle var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+
+      .loader.triangle {
+        width: 48px;
+      }
+
+      .loader.triangle:before {
+        left: 21px;
+        transform: translate(-10px, -18px);
+        animation: dotTriangle var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+
+      @keyframes pathTriangle {
+        33% {
+          stroke-dashoffset: 74;
+        }
+
+        66% {
+          stroke-dashoffset: 147;
+        }
+
+        100% {
+          stroke-dashoffset: 221;
+        }
+      }
+
+      @keyframes dotTriangle {
+        33% {
+          transform: translate(0, 0);
+        }
+
+        66% {
+          transform: translate(10px, -18px);
+        }
+
+        100% {
+          transform: translate(-10px, -18px);
+        }
+      }
+
+      @keyframes pathRect {
+        25% {
+          stroke-dashoffset: 64;
+        }
+
+        50% {
+          stroke-dashoffset: 128;
+        }
+
+        75% {
+          stroke-dashoffset: 192;
+        }
+
+        100% {
+          stroke-dashoffset: 256;
+        }
+      }
+
+      @keyframes dotRect {
+        25% {
+          transform: translate(0, 0);
+        }
+
+        50% {
+          transform: translate(18px, -18px);
+        }
+
+        75% {
+          transform: translate(0, -36px);
+        }
+
+        100% {
+          transform: translate(-18px, -18px);
+        }
+      }
+
+      @keyframes pathCircle {
+        25% {
+          stroke-dashoffset: 125;
+        }
+
+        50% {
+          stroke-dashoffset: 175;
+        }
+
+        75% {
+          stroke-dashoffset: 225;
+        }
+
+        100% {
+          stroke-dashoffset: 275;
+        }
+      }
+
+      .loader {
+        display: inline-block;
+        margin: 0 16px;
+      }
+    </style>
+    <!-- print styles -->
+    <style>
+      .full-screen {
+        display: none;
+      }
+      .image-container {
+        display: none;
+      }
+      #licence {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        background: #fff;
+      }
+      @media print {
+        @page {
+          size: A4;
+          margin: 20mm;
+        }
+
+        body {
+          width: fit-content;
+          display: flex;
+          justify-content: center;
+        }
+
+        .page-break {
+          page-break-before: always;
+          page-break-inside: avoid;
+        }
+
+        .dashboard-card {
+          overflow: visible;
+        }
+
+        .print {
+          display: flex !important;
+        }
+
+        .no-print {
+          display: none !important;
+        }
+
+        .full-screen {
+          height: 100%;
+          /* position: fixed; */
+          /* z-index: 20000; */
+          /* top: 0; */
+        }
+        .image-container {
+          z-index: 20000;
+          top: 0;
+          width: 100vw;
+          height: 100%;
+          position: fixed;
+          justify-content: center;
+          align-items: flex-start;
+          display: flex;
+        }
+
+        .image-container img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="licence"></div>
+
+    <div class="container-fluid no-print">
+      <h4 class="report-title-print"></h4>
+      <!-- widget cards -->
+      <div id="widgets-container" class="widgets-container mb-3"></div>
+    </div>
+
+    <div id="capture"></div>
+
+    <div class="image-container full-screen print">
+      <img id="print-image" class="" src="" alt="" />
+    </div>
+
+    <!-- charts and visualizing -->
+    <script>
+      // --------------------------  DIVIDER  dev extreme ----------------------------------------------
+      function createDevExtremeWidgetContainer(widget) {
+        console.log("widget", widget.width.value);
+        // Create main container
+        const container = document.createElement("div");
+        container.className = "widget-container";
+        container.style.width = `calc(${+widget.width.value}${
+          widget.width.unit
+        } - 20px)`;
+        container.style.margin = `10px`;
+        // Create header
+        const header = document.createElement("div");
+        header.className = "widget-header";
+
+        const title = document.createElement("h3");
+        title.textContent = widget.label;
+        header.appendChild(title);
+
+        // Create custom content area
+        const content = document.createElement("div");
+        content.className = "custom-widget-content p-4";
+
+        // Create DevExtreme container
+        const viewport = document.createElement("div");
+        viewport.className = "dx-viewport demo-container";
+
+        // Create chart element
+        const chartElement = document.createElement("div");
+        chartElement.id = widget.id;
+
+        // Append chart element to viewport
+        viewport.appendChild(chartElement);
+
+        // Append viewport to content
+        content.appendChild(viewport);
+
+        // Append header and content to container
+        container.appendChild(header);
+        container.appendChild(content);
+
+        // Return the fully constructed container
+        return container;
+      }
+
+      // --------------------------  DIVIDER  counter --------------------------------------------------
+      function createCounterWidgetContainer(widget) {
+        let width = `calc(${+widget.width.value}${widget.width.unit} - 20px)`;
+        let content = `<div class="widget-container" style="width: calc(${width} - 20px); margin: 10px">
+        <div class="widget-header">
+          <h3>${widget.label}</h3>
+        </div>
+        <div class="custom-widget-content p-4">
+          <div class="counter-container">
+            <div class="counter">
+              <div class="counter-value">
+                <span>${widget.data}</span>
+              </div>
+              <div class="counter-label">
+                <span>${widget.label}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+        return content;
+      }
+
+      // --------------------------  DIVIDER  progress -------------------------------------------------
+      function createProgressWidgetContainer(widget) {
+        let width = `calc(${+widget.width.value}${widget.width.unit} - 20px)`;
+        let rows = "";
+
+        let row = (elm) => {
+          return `<tr>
+          <td class="variable-value">${elm.attribute}</td>
+          <td class="variable-value">${elm.count}</td>
+          <td class='progress-container'>
+            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" style="width: ${elm.percentage}%"></div>
+              </div>
+          </td>
+          <td class="variable-value">${elm.percentage}%</td>
+          </tr>`;
+        };
+
+        for (let i = 0; i < widget.data.points.length; i++) {
+          rows += row(widget.data.points[i]);
+        }
+
+        let content = `<table class="table table-striped mb-0 custom-table-bg table-auto">
+          <thead class="border-bottom">
+            <tr>
+              <th scope="col">Labels</th>
+              <th scope="col">Count</th>
+              <th scope="col">Percentage</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+          <tfoot class="border-top">
+            <tr>
+              <td colspan="1" class="text-center"><strong>Total:</strong></td>
+              <td class="variable-value"><strong>${widget.data.totalPointsNumber}</strong></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>`;
+
+        let widgetContainer = `
+        <div class="widget-container" style="width: calc(${width} - 20px); margin: 10px">
+        <div class="widget-header">
+          <h3>${widget.label}</h3>
+        </div>
+        <div class="custom-widget-content p-4">
+          ${content}
+        </div>
+      </div>`;
+        return widgetContainer;
+      }
+
+      // --------------------------  DIVIDER  table ----------------------------------------------------
+      function createTableWidgetContainer(widget) {
+        let width = `calc(${+widget.width.value}${widget.width.unit} - 20px)`;
+        let rows = "";
+        let row = (elm) => {
+          return `<tr>
+          <td class="variable-value">${elm.argument}</td>
+          <td class="variable-value">${elm.value}</td>
+          </tr>`;
+        };
+
+        for (let i = 0; i < widget.data.length; i++) {
+          rows += row(widget.data[i]);
+        }
+
+        let content = `<table class="table table-striped mb-0 custom-table-bg table-auto">
+          <thead class="border-bottom">
+            <tr>
+              <th scope="col">Argument</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>`;
+
+        let widgetContainer = `
+        <div class="widget-container" style="width: calc(${width} - 20px); margin: 10px">
+        <div class="widget-header">
+          <h3>${widget.label}</h3>
+        </div>
+        <div class="custom-widget-content p-4">
+          ${content}
+        </div>
+      </div>`;
+
+        return widgetContainer;
+      }
+
+      // --------------------------  DIVIDER  charts ---------------------------------------------------
+      function createPieOptions(widget) {
+        const options = {
+          dataSource: widget.data,
+          commonSeriesSettings: {
+            argumentField: "attribute",
+          },
+          series: [
+            {
+              argumentField: "attribute",
+              valueField: "count",
+              label: {
+                visible: true,
+                connector: { visible: true, width: 1 },
+              },
+              type: "doughnut", // Add this line for doughnut chart type
+            },
+          ],
+          legend: {
+            verticalAlignment: "bottom",
+            horizontalAlignment: "center",
+            itemTextPosition: "bottom",
+          },
+          tooltip: {
+            enabled: true,
+          },
+        };
+
+        return options;
+      }
+
+      function createBarOptions(widget) {
+        const options = {
+          dataSource: widget.data.chartData,
+          commonSeriesSettings: {
+            argumentField: "argument",
+          },
+          series: [
+            {
+              type: "bar",
+              valueField: "value",
+              label: {
+                visible: true,
+              },
+              name: widget.w_attribute,
+            },
+          ],
+          legend: {
+            verticalAlignment: "bottom",
+            horizontalAlignment: "center",
+            itemTextPosition: "bottom",
+          },
+          tooltip: {
+            enabled: true,
+          },
+        };
+
+        return options;
+      }
+
+      function createLineOptions(widget) {
+        const options = {
+          dataSource: widget.data.chartData,
+          commonSeriesSettings: {
+            argumentField: "argument",
+          },
+          series: [
+            {
+              type: "line",
+              valueField: "value",
+              label: {
+                visible: true,
+              },
+              name: widget.w_attribute,
+            },
+          ],
+          legend: {
+            verticalAlignment: "bottom",
+            horizontalAlignment: "center",
+            itemTextPosition: "bottom",
+          },
+          tooltip: {
+            enabled: true,
+          },
+        };
+
+        return options;
+      }
+
+      // --------------------------  DIVIDER  dev extreme ----------------------------------------------
+      function setTitle() {
+        // set Title
+        let title = document.querySelector(".report-title-print");
+        title.innerText = Response.name;
+      }
+
+      function createWidgetsView() {
+        // set widgets
+        let widgetsContainer = document.querySelector("#widgets-container");
+        Response.op_commander_widgets?.forEach((elm) => {
+          if (elm.w_type == "pieChart") {
+            let widget = createDevExtremeWidgetContainer(elm);
+            widgetsContainer.appendChild(widget);
+            if ($.fn.dxChart) $(`#${elm.id}`).dxPieChart(createPieOptions(elm));
+          } else if (elm.w_type == "barChart") {
+            let widget = createDevExtremeWidgetContainer(elm);
+            widgetsContainer.appendChild(widget);
+            if ($.fn.dxChart) $(`#${elm.id}`).dxChart(createBarOptions(elm));
+          } else if (elm.w_type == "lineChart") {
+            let widget = createDevExtremeWidgetContainer(elm);
+            widgetsContainer.appendChild(widget);
+            if ($.fn.dxChart) $(`#${elm.id}`).dxChart(createLineOptions(elm));
+          } else if (elm.w_type == "counter") {
+            let widget = createCounterWidgetContainer(elm);
+            const newElement = $(widget)[0];
+            widgetsContainer.appendChild(newElement);
+          } else if (elm.w_type == "gridProgress") {
+            let widget = createProgressWidgetContainer(elm);
+            const newElement = $(widget)[0];
+            widgetsContainer.appendChild(newElement);
+          } else if (elm.w_type == "table") {
+            let widget = createTableWidgetContainer(elm);
+            const newElement = $(widget)[0];
+            widgetsContainer.appendChild(newElement);
+          } else
+            console.error(
+              "Custom Error: DevExtreme Chart widget is not loaded properly"
+            );
+        });
+      }
+
+      // --------------------------  DIVIDER  response -------------------------------------------------
+      let Response = "$$$RESPONSE$$$";
+
+      setTitle();
+      createWidgetsView();
+
+      // Select the element
+      const targetElement = document.getElementById("body");
+
+      // Create and dispatch a custom "resize" event
+      const resizeEvent = new Event("resize");
+      targetElement.dispatchEvent(resizeEvent);
+      
+      setTimeout(()=>{
+        targetElement.dispatchEvent(resizeEvent);
+
+      },1000)
+
+      // Listen for the custom resize event
+      targetElement.addEventListener("resize", () => {
+        console.log("Custom resize event fired!");
+      });
+    </script>
+  </body>
+</html>

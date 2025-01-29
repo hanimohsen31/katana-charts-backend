@@ -1,0 +1,1057 @@
+{
+    "data": {
+        "dashboard": {
+            "op_commander_widgets": [
+                {
+                    "id": 46,
+                    "label": "Total Number Of Alarms",
+                    "width": {
+                        "value": "33.33",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "counter",
+                    "border_color": null,
+                    "w_attribute": "Status",
+                    "w_attribute_type": "Alarms",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T23:02:56.458303",
+                    "updated_at": "2024-12-31T23:02:56.458617",
+                    "data": 7857
+                },
+                {
+                    "id": 44,
+                    "label": "Alarms Status",
+                    "width": {
+                        "value": "33.33",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "pieChart",
+                    "border_color": null,
+                    "w_attribute": "Status",
+                    "w_attribute_type": "Alarms",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T12:54:23.759015",
+                    "updated_at": "2024-12-31T12:54:23.767193",
+                    "data": [
+                        {
+                            "attribute": "active alarms",
+                            "count": 2026
+                        },
+                        {
+                            "attribute": "historical alarms",
+                            "count": 5831
+                        }
+                    ]
+                },
+                {
+                    "id": 47,
+                    "label": "Acknowledge",
+                    "width": {
+                        "value": "33.33",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "gridProgress",
+                    "border_color": null,
+                    "w_attribute": "Acknowledge",
+                    "w_attribute_type": "Alarms",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T23:02:56.458303",
+                    "updated_at": "2024-12-31T12:54:23.759455",
+                    "data": {
+                        "totalPointsNumber": 2026,
+                        "points": [
+                            {
+                                "attribute": "acknowledged",
+                                "count": 12,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "not acknowledged",
+                                "count": 2014,
+                                "percentage": 99
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 48,
+                    "label": "HU_Severity",
+                    "width": {
+                        "value": "50",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "barChart",
+                    "border_color": null,
+                    "w_attribute": "Severity",
+                    "w_attribute_type": "Attributes",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T12:54:23.759015",
+                    "updated_at": "2024-12-31T12:54:23.759446",
+                    "data": {
+                        "chartSeries": [
+                            {
+                                "name": "Severity"
+                            }
+                        ],
+                        "chartData": [
+                            {
+                                "seriesName": "Severity",
+                                "argument": "2",
+                                "value": 49
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "3",
+                                "value": 499
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "4",
+                                "value": 79
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "5",
+                                "value": 8
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "6",
+                                "value": 1391
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 49,
+                    "label": "Alarms Dist.",
+                    "width": {
+                        "value": "50",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "table",
+                    "border_color": null,
+                    "w_attribute": "alarmName",
+                    "w_attribute_type": "Attributes",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T23:02:56.458303",
+                    "updated_at": "2024-12-31T12:54:23.759455",
+                    "data": [
+                        {
+                            "argument": "AC Surge Protector Fault",
+                            "value": 36
+                        },
+                        {
+                            "argument": "ALD Maintenance Link Failure",
+                            "value": 81
+                        },
+                        {
+                            "argument": "Automatic Version Rollback",
+                            "value": 10
+                        },
+                        {
+                            "argument": "BBU CPRI Optical Module or Electrical Port Not Ready",
+                            "value": 44
+                        },
+                        {
+                            "argument": "BBU Fan Stalled",
+                            "value": 2
+                        },
+                        {
+                            "argument": "Board Clock Input Unavailable",
+                            "value": 5
+                        },
+                        {
+                            "argument": "Board Hardware Fault",
+                            "value": 2
+                        },
+                        {
+                            "argument": "Board Not In Position",
+                            "value": 166
+                        },
+                        {
+                            "argument": "Board in Wrong Slot",
+                            "value": 6
+                        },
+                        {
+                            "argument": "Burglar Alarm",
+                            "value": 102
+                        },
+                        {
+                            "argument": "CSL Fault",
+                            "value": 1
+                        },
+                        {
+                            "argument": "Carrier Configuration Error",
+                            "value": 3
+                        },
+                        {
+                            "argument": "Cell PCI Conflict",
+                            "value": 2
+                        },
+                        {
+                            "argument": "Cell RX Channel Interference Noise Power Unbalanced",
+                            "value": 3
+                        },
+                        {
+                            "argument": "Cell Unavailable",
+                            "value": 4
+                        },
+                        {
+                            "argument": "Data Configuration Exceeding Licensed Limit",
+                            "value": 443
+                        },
+                        {
+                            "argument": "E1/T1 Loss of Signal",
+                            "value": 5
+                        },
+                        {
+                            "argument": "External Clock Reference Not Configured",
+                            "value": 6
+                        },
+                        {
+                            "argument": "External Clock Reference Problem",
+                            "value": 4
+                        },
+                        {
+                            "argument": "Failed to Send the Remote Notification",
+                            "value": 1
+                        },
+                        {
+                            "argument": "Feature Expired Alarm",
+                            "value": 1
+                        },
+                        {
+                            "argument": "GSM Cell out of Service",
+                            "value": 2
+                        },
+                        {
+                            "argument": "GSM Local Cell Unusable",
+                            "value": 15
+                        },
+                        {
+                            "argument": "Inter-Board CANBUS Communication Failure",
+                            "value": 1
+                        },
+                        {
+                            "argument": "License on Trial",
+                            "value": 393
+                        },
+                        {
+                            "argument": "Licensed Feature Entering Keep-Alive Period",
+                            "value": 42
+                        },
+                        {
+                            "argument": "Licensed Feature Unusable",
+                            "value": 80
+                        },
+                        {
+                            "argument": "Mains Input Out of Range",
+                            "value": 44
+                        },
+                        {
+                            "argument": "Monitoring Device Maintenance Link Failure",
+                            "value": 75
+                        },
+                        {
+                            "argument": "NE Is Disconnected",
+                            "value": 2
+                        },
+                        {
+                            "argument": "Power Module Abnormal",
+                            "value": 40
+                        },
+                        {
+                            "argument": "Power Module and Monitoring Module Communication Failure",
+                            "value": 39
+                        },
+                        {
+                            "argument": "RAT Conflict between separate-MPT Boards",
+                            "value": 19
+                        },
+                        {
+                            "argument": "RET Antenna Running Data and Configuration Mismatch",
+                            "value": 2
+                        },
+                        {
+                            "argument": "RF Unit ALD Current Out of Range",
+                            "value": 19
+                        },
+                        {
+                            "argument": "RF Unit ALD Switch Configuration Mismatch",
+                            "value": 41
+                        },
+                        {
+                            "argument": "RF Unit CPRI Interface Error",
+                            "value": 1
+                        },
+                        {
+                            "argument": "RF Unit Hardware Fault",
+                            "value": 1
+                        },
+                        {
+                            "argument": "RF Unit Maintenance Link Failure",
+                            "value": 99
+                        },
+                        {
+                            "argument": "RF Unit RX Channel RTWP/RSSI Too Low",
+                            "value": 1
+                        },
+                        {
+                            "argument": "RF Unit RX Channel RTWP/RSSI Unbalanced",
+                            "value": 12
+                        },
+                        {
+                            "argument": "RF Unit Runtime Topology Error",
+                            "value": 6
+                        },
+                        {
+                            "argument": "RF Unit TX Channel Gain Out of Range",
+                            "value": 1
+                        },
+                        {
+                            "argument": "RF Unit VSWR Threshold Crossed",
+                            "value": 4
+                        },
+                        {
+                            "argument": "RF Unit Working Mode and Board Capability Mismatch",
+                            "value": 6
+                        },
+                        {
+                            "argument": "Remote Maintenance Link Failure",
+                            "value": 6
+                        },
+                        {
+                            "argument": "SCTP Link Fault",
+                            "value": 11
+                        },
+                        {
+                            "argument": "Subrack Type and Configuration Mismatch",
+                            "value": 42
+                        },
+                        {
+                            "argument": "Task execution failure alarm",
+                            "value": 8
+                        },
+                        {
+                            "argument": "Temporary feature field in the license is invalid",
+                            "value": 1
+                        },
+                        {
+                            "argument": "The User in the SMManagers Group Changes a User's Password",
+                            "value": 2
+                        },
+                        {
+                            "argument": "The license resource usage reaches or exceeds the threshold 100%",
+                            "value": 5
+                        },
+                        {
+                            "argument": "Time Synchronization Failure",
+                            "value": 4
+                        },
+                        {
+                            "argument": "Transmission Optical Interface Error",
+                            "value": 20
+                        },
+                        {
+                            "argument": "X2 Interface Fault",
+                            "value": 55
+                        }
+                    ]
+                },
+                {
+                    "id": 50,
+                    "label": "Enodebs",
+                    "width": {
+                        "value": "33.33",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "gridProgress",
+                    "border_color": null,
+                    "w_attribute": "neName",
+                    "w_attribute_type": "Attributes",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T12:54:23.759015",
+                    "updated_at": "2024-12-31T23:02:56.458617",
+                    "data": {
+                        "totalPointsNumber": 2026,
+                        "points": [
+                            {
+                                "attribute": "",
+                                "count": 19,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Allunghari",
+                                "count": 65,
+                                "percentage": 3
+                            },
+                            {
+                                "attribute": "BSC",
+                                "count": 7,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Bakau Newtown",
+                                "count": 9,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Banjul Tower",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Banjulinding",
+                                "count": 24,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Bato Kunku",
+                                "count": 2,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Bijilo II",
+                                "count": 14,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brikama Cow",
+                                "count": 5,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Brikama Jamisa",
+                                "count": 28,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brikama Medina",
+                                "count": 26,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brikama Newtown",
+                                "count": 17,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brikama Nyambai",
+                                "count": 37,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Brikama Tower",
+                                "count": 5,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Brufut Medina",
+                                "count": 17,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brufut_Mkt",
+                                "count": 15,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brufut_Nema",
+                                "count": 14,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Brusubi",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Brusubi 2",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Brusubi Turntable",
+                                "count": 20,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Bundung Mosque",
+                                "count": 36,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Busumbala",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Busumbala 3",
+                                "count": 38,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Busumbala 4",
+                                "count": 29,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Busumbala Central",
+                                "count": 32,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Busumbala II",
+                                "count": 10,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Faji Kunda II",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Farafenni 2",
+                                "count": 9,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Farato",
+                                "count": 2,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Farato-Paradise City",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Future Lecce",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Gamtel Bakau",
+                                "count": 7,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Gouygi Market",
+                                "count": 28,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Gunjur",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Gunjur 2",
+                                "count": 40,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "HQ",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Jabang",
+                                "count": 8,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Jabang Estate",
+                                "count": 5,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Jabang Estate II",
+                                "count": 7,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Jalambang",
+                                "count": 164,
+                                "percentage": 8
+                            },
+                            {
+                                "attribute": "Jambajelli",
+                                "count": 41,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Jambur",
+                                "count": 14,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Jambur-Sinchu Gidon",
+                                "count": 14,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Kabafita",
+                                "count": 11,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Kabafita Layout",
+                                "count": 182,
+                                "percentage": 9
+                            },
+                            {
+                                "attribute": "Kanifing Estate",
+                                "count": 41,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Kartong",
+                                "count": 9,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Kaur",
+                                "count": 5,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Kerr Seringe",
+                                "count": 13,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Kololi-Palma Junction",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Kotu Quarry",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Kunkujang Keitaya",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Kuntaur",
+                                "count": 7,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "LK Sabiji",
+                                "count": 13,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "LK Sabiji Market",
+                                "count": 16,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "LK School",
+                                "count": 15,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "L_Manjai II",
+                                "count": 30,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Lamin Babylon",
+                                "count": 26,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Lamin CDC",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Lamin Daranka",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Lamin Sateyba",
+                                "count": 9,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Mamuda",
+                                "count": 9,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Manjai",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Mansajang",
+                                "count": 22,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Marakissa",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Minteh Kunda",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Nema Junction",
+                                "count": 5,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Nema Kunku",
+                                "count": 13,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Nemakunku II",
+                                "count": 9,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Nemasu II",
+                                "count": 60,
+                                "percentage": 3
+                            },
+                            {
+                                "attribute": "Numuyel",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Old Yundum 3",
+                                "count": 13,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Old Yundum 4",
+                                "count": 29,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Old Yundum II",
+                                "count": 6,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "SK London Corner",
+                                "count": 8,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "SOS",
+                                "count": 23,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Salaji",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sanchaba Touba",
+                                "count": 8,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sanyang",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sanyang 2",
+                                "count": 58,
+                                "percentage": 3
+                            },
+                            {
+                                "attribute": "Serra Kunda Mkt Bldg",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sifo",
+                                "count": 35,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Sinchu Alhaji",
+                                "count": 12,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Sinchu Sorry",
+                                "count": 16,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Soul Samba Street",
+                                "count": 1,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sudowol",
+                                "count": 6,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sukuta",
+                                "count": 8,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Sukuta 2",
+                                "count": 34,
+                                "percentage": 2
+                            },
+                            {
+                                "attribute": "Sukuta 3",
+                                "count": 82,
+                                "percentage": 4
+                            },
+                            {
+                                "attribute": "Sukuta Lambai",
+                                "count": 25,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Sukuta-Jabang Highway",
+                                "count": 3,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Tallinding",
+                                "count": 18,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Tanji",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Tawto",
+                                "count": 4,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Tendaba Camp",
+                                "count": 131,
+                                "percentage": 6
+                            },
+                            {
+                                "attribute": "Test",
+                                "count": 19,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Test 2",
+                                "count": 96,
+                                "percentage": 5
+                            },
+                            {
+                                "attribute": "Tujereng Estate",
+                                "count": 7,
+                                "percentage": 0
+                            },
+                            {
+                                "attribute": "Welingara",
+                                "count": 13,
+                                "percentage": 1
+                            },
+                            {
+                                "attribute": "Yundum Medina",
+                                "count": 11,
+                                "percentage": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 52,
+                    "label": "Severity",
+                    "width": {
+                        "value": "100",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "lineChart",
+                    "border_color": null,
+                    "w_attribute": "Severity",
+                    "w_attribute_type": "Attributes",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T12:54:23.766891",
+                    "updated_at": "2024-12-31T23:02:56.458617",
+                    "data": {
+                        "chartSeries": [
+                            {
+                                "name": "Severity"
+                            }
+                        ],
+                        "chartData": [
+                            {
+                                "seriesName": "Severity",
+                                "argument": "2",
+                                "value": 49
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "3",
+                                "value": 499
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "4",
+                                "value": 79
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "5",
+                                "value": 8
+                            },
+                            {
+                                "seriesName": "Severity",
+                                "argument": "6",
+                                "value": 1391
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 51,
+                    "label": "Severity",
+                    "width": {
+                        "value": "66.67",
+                        "unit": "%"
+                    },
+                    "height": {
+                        "value": 500,
+                        "unit": "px"
+                    },
+                    "ui_order": 0,
+                    "w_type": "pieChart",
+                    "border_color": null,
+                    "w_attribute": "Severity",
+                    "w_attribute_type": "Attributes",
+                    "time_selection": {
+                        "from": null,
+                        "to": null
+                    },
+                    "alarm_viewer_id": null,
+                    "created_at": "2024-12-31T12:54:23.759015",
+                    "updated_at": "2024-12-31T23:02:56.458617",
+                    "data": [
+                        {
+                            "attribute": "2",
+                            "count": 49
+                        },
+                        {
+                            "attribute": "3",
+                            "count": 499
+                        },
+                        {
+                            "attribute": "4",
+                            "count": 79
+                        },
+                        {
+                            "attribute": "5",
+                            "count": 8
+                        },
+                        {
+                            "attribute": "6",
+                            "count": 1391
+                        }
+                    ]
+                }
+            ],
+            "id": 13,
+            "name": "Sprint Review_Test",
+            "description": "Sprint Review_Test",
+            "user_id": "91394d68-6551-4cfb-b579-2cc12fcae388",
+            "is_default": false,
+            "created_by": "admin@gmail.com",
+            "privacy": "public",
+            "created_at": "2024-12-31T12:54:23.759015",
+            "updated_at": "2025-01-02T09:21:00.008468",
+            "user": {
+                "id": "91394d68-6551-4cfb-b579-2cc12fcae388",
+                "email": "admin@gmail.com"
+            }
+        }
+    },
+    "status": "Ok"
+}
