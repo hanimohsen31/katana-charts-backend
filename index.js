@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 function makeFileCopyWithData(timestamp, dashboardResponse) {
   try {
     let newCopyUpdatedFile = `./templates/base${timestamp}.html`;
+    if (!fs.existsSync('./templates')) {
+      fs.mkdirSync('./templates', { recursive: true });
+    }
     const data = fs.readFileSync(baseHtml, "utf8");
     const updatedContent = data.replace(
       `"$$$RESPONSE$$$"`,
@@ -26,6 +29,9 @@ function makeFileCopyWithData(timestamp, dashboardResponse) {
 }
 
 function deleteAllFilesInDirectory(timestamp) {
+  if (!fs.existsSync('./templates')) {
+    fs.mkdirSync('./templates', { recursive: true });
+  }
   const directoryPath = path.resolve(__dirname, "./templates");
   const fileName = `base${timestamp}.html`;
   const filePath = path.join(directoryPath, fileName);
@@ -41,6 +47,9 @@ function deleteAllFilesInDirectory(timestamp) {
 
 // --------------------------  DIVIDER  exportPNG -------------------------------------------------
 async function exportPNG(timestamp) {
+  if (!fs.existsSync('./output')) {
+    fs.mkdirSync('./output', { recursive: true });
+  }
   const imagePath = path.resolve(__dirname, `./output/${timestamp}.png`);
 
   try {
@@ -72,6 +81,9 @@ async function exportPNG(timestamp) {
 }
 
 async function convertPNGtoPDF(timestamp) {
+  if (!fs.existsSync('./output')) {
+    fs.mkdirSync('./output', { recursive: true });
+  }
   const imagePath = path.resolve(__dirname, `./output/${timestamp}.png`);
   const pdfPath = path.resolve(__dirname, `./output/${timestamp}.pdf`);
 
@@ -131,7 +143,7 @@ app.post("/export/png", async (req, res) => {
     makeFileCopyWithData(timestamp, payload);
     await exportPNG(timestamp);
     deleteAllFilesInDirectory(timestamp);
-    
+
     res
       .status(200)
       .json({ success: true, imagePath: `output/${timestamp}.png` });
